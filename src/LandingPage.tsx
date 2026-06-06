@@ -48,22 +48,32 @@ const projects: Project[] = [
   },
 ];
 
+import { Link } from "react-router-dom";
+
+const MotionLink = motion(Link);
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const wobble = index % 2 === 0 ? -2 : 2;
   // Nota: Atenção ao erro de digitação no seu objeto original (commingSoon com dois 'm')
   const comingSoon = project.commingSoon;
 
   return (
-    <motion.a
-     href={comingSoon ? undefined : `/RS-Studio-Projects-Wiki/projects/${project.id}`}
-      initial={{ opacity: 0, y: 18, rotate: wobble }}
-      animate={{ opacity: 1, y: 0, rotate: 0 }}
-      transition={{ duration: 0.35, delay: index * 0.04 }}
-      whileHover={comingSoon ? undefined : { y: -4, rotate: index % 2 === 0 ? -1 : 1 }}
-      className={`block ${comingSoon ? "pointer-events-none" : ""}`}
-      aria-disabled={comingSoon}
-      onClick={(e) => comingSoon && e.preventDefault()}
-    >
+  <MotionLink
+    to={comingSoon ? "#" : `/projects/${project.id}`}
+    initial={{ opacity: 0, y: 18, rotate: wobble }}
+    animate={{ opacity: 1, y: 0, rotate: 0 }}
+    transition={{ duration: 0.35, delay: index * 0.04 }}
+    whileHover={
+      comingSoon
+        ? undefined
+        : { y: -4, rotate: index % 2 === 0 ? -1 : 1 }
+    }
+    className={`block ${comingSoon ? "pointer-events-none" : ""}`}
+    aria-disabled={comingSoon}
+    onClick={(e) => comingSoon && e.preventDefault()}
+  >
+
+  
       {/* 1. Mudança no bg- do Card base se for comingSoon */}
       <Card className={`relative overflow-hidden rounded-[1.8rem] border-2 border-[#cfd3df]/35 shadow-[0_18px_50px_rgba(0,0,0,0.32)] ${comingSoon ? "bg-[#27272a]" : "bg-[#131a31]"
         }`}>
@@ -105,7 +115,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
         </CardContent>
       </Card>
-    </motion.a>
+    </MotionLink>
   );
 }
 
