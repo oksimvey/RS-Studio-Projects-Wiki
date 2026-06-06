@@ -261,7 +261,6 @@ function SectionRenderer({ section }: { section: WikiSection }) {
 
 
 
-
 export default function ProjectWikiPage() {
   const { projectId } = useParams();
   const page = projectId ? wikiPages[projectId] : undefined;
@@ -382,13 +381,13 @@ export default function ProjectWikiPage() {
 
               <nav className="mt-4 space-y-2">
                 {toc.map((item, index) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="block rounded-xl border border-white/5 bg-white/5 px-3 py-2 text-sm text-white/75 transition hover:bg-white/10 hover:text-white"
-                  >
-                    {index + 1}. {item.title}
-                  </a>
+                 <a
+  key={item.id}
+  href={`#${item.id}`}
+  className="block rounded-xl border border-white/5 bg-white/5 px-3 py-2 text-sm text-white/75 transition hover:bg-white/10 hover:text-white"
+>
+  {index + 1}. {item.title}
+</a>
                 ))}
               </nav>
             </div>
