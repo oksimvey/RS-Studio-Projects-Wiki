@@ -47,7 +47,8 @@ const projects: Project[] = [
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const wobble = index % 2 === 0 ? -2 : 2;
-  const comingSoon = project.commingSoon;
+  // Nota: Atenção ao erro de digitação no seu objeto original (commingSoon com dois 'm')
+  const comingSoon = project.commingSoon; 
 
   return (
     <motion.a
@@ -60,8 +61,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       aria-disabled={comingSoon}
       onClick={(e) => comingSoon && e.preventDefault()}
     >
-      <Card className="relative overflow-hidden rounded-[1.8rem] border-2 border-[#cfd3df]/35 bg-[#131a31] shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
-        <div className={`absolute inset-0 bg-gradient-to-br ${project.color}`} />
+      {/* 1. Mudança no bg- do Card base se for comingSoon */}
+      <Card className={`relative overflow-hidden rounded-[1.8rem] border-2 border-[#cfd3df]/35 shadow-[0_18px_50px_rgba(0,0,0,0.32)] ${
+        comingSoon ? "bg-[#27272a]" : "bg-[#131a31]"
+      }`}>
+        
+        {/* 2. O gradiente de cor só aparece se NÃO for comingSoon */}
+        {!comingSoon && (
+          <div className={`absolute inset-0 bg-gradient-to-br ${project.color}`} />
+        )}
+        
         <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.7)_1px,transparent_0)] [background-size:18px_18px]" />
 
         <CardContent className="relative p-3">
@@ -69,7 +78,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <img
               src={project.image}
               alt={project.title}
-              className={`h-full w-full object-cover ${comingSoon ? "grayscale" : ""}`}
+              className={`h-full w-full object-cover ${comingSoon ? "grayscale opacity-50" : ""}`}
               loading="lazy"
             />
 
@@ -83,11 +92,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
 
           <div className="mt-3 space-y-3 p-4 text-center">
-            <h3 className="text-xl font-extrabold tracking-tight text-white">
+            {/* 3. Ajuste opcional na cor do texto para dar aspecto de desativado */}
+            <h3 className={`text-xl font-extrabold tracking-tight ${comingSoon ? "text-zinc-400" : "text-white"}`}>
               {project.title}
             </h3>
 
-            <p className="mt-1 text-sm leading-6 text-white/68">
+            <p className={`mt-1 text-sm leading-6 ${comingSoon ? "text-zinc-500" : "text-white/68"}`}>
               {project.description}
             </p>
           </div>
