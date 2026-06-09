@@ -292,7 +292,7 @@ export default function ProjectWikiPage() {
   }
 
   const toc = page.sections.map((section, index) => ({
-    id: `section-${index}`,
+    id: `/projects/${projectId}#section-${index}`,
     title: section.title ?? `Section ${index + 1}`,
   }));
 
