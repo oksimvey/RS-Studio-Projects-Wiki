@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 type MediaItem =
   | {
@@ -93,15 +94,17 @@ const wikiPages: Record<string, ProjectWiki> = {
           "Cutscene support",
           "Lock-on mode",
           "Custom transition easing",
-          "Easy expansion for future camera states",
+          "Easy expansion for future camera states",   
         ],
       },
       {
-        type: "callout",
-        tone: "info",
+        type: "list",
+       
         title: "Design goal",
-        content:
+        items:[
           "The goal was to keep the logic clean and easy to extend, while still feeling polished in-game.",
+      
+        ]
       },
     ],
   },
@@ -263,7 +266,15 @@ function SectionRenderer({ section }: { section: WikiSection }) {
 
 export default function ProjectWikiPage() {
   const { projectId } = useParams();
+  const location = useLocation();
   const page = projectId ? wikiPages[projectId] : undefined;
+
+  useEffect(() => {
+    if (!location.hash) return;
+
+    const target = document.getElementById(location.hash.slice(1));
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [location.hash, page]);
 
   if (!page) {
     return (
@@ -292,7 +303,7 @@ export default function ProjectWikiPage() {
   }
 
   const toc = page.sections.map((section, index) => ({
-    id: `/projects/${projectId}#section-${index}`,
+    id: `section-${index}`,
     title: section.title ?? `Section ${index + 1}`,
   }));
 
@@ -309,7 +320,7 @@ export default function ProjectWikiPage() {
 
       <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:72px_72px]" />
 
-      <main className="relative mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <main className="relative mx-auto max-w-7xl px-5 py-6 pb-20 sm:px-6 lg:px-8 lg:py-8 lg:pb-24">
 
         {/* TOP BAR */}
         <div className="mb-6 flex items-center justify-between gap-4">
@@ -381,13 +392,16 @@ export default function ProjectWikiPage() {
 
               <nav className="mt-4 space-y-2">
                 {toc.map((item, index) => (
-                  <a
+                  <Link
                     key={item.id}
-                    href={`#${item.id}`}
+                    to={{
+                      pathname: `/projects/${projectId}`,
+                      hash: `#${item.id}`,
+                    }}
                     className="block rounded-xl border border-white/5 bg-white/5 px-3 py-2 text-sm text-white/75 transition hover:bg-white/10 hover:text-white"
                   >
                     {index + 1}. {item.title}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -399,6 +413,7 @@ export default function ProjectWikiPage() {
               <motion.section
                 key={index}
                 id={`section-${index}`}
+                className="scroll-mt-24"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
