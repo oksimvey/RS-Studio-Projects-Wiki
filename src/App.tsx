@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import LandingPage from "./LandingPage";
-import Wiki from "./Wiki";
+import Wiki from "./Wiki.tsx";
 
 export default function App() {
   const location = useLocation();

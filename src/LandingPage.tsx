@@ -39,7 +39,7 @@ const projects: Project[] = [
     commingSoon: false,
   },
   {
-    id: "leaves-system",
+    id : "leaves-system",
     title: "Leaves System",
     description: "Animated, interactive and optimized leaves system.",
     image: leavsimg,
