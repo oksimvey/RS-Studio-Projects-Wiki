@@ -3,39 +3,39 @@ import { Link, useParams } from "react-router-dom";
 
 type MediaItem =
   | {
-      type: "image";
-      src: string;
-      alt: string;
-      caption?: string;
-    }
+    type: "image";
+    src: string;
+    alt: string;
+    caption?: string;
+  }
   | {
-      type: "video";
-      src: string;
-      caption?: string;
-    };
+    type: "video";
+    src: string;
+    caption?: string;
+  };
 
 type WikiSection =
   | {
-      type: "text";
-      title: string;
-      content: string[];
-    }
+    type: "text";
+    title: string;
+    content: string[];
+  }
   | {
-      type: "media";
-      title?: string;
-      items: MediaItem[];
-    }
+    type: "media";
+    title?: string;
+    items: MediaItem[];
+  }
   | {
-      type: "list";
-      title: string;
-      items: string[];
-    }
+    type: "list";
+    title: string;
+    items: string[];
+  }
   | {
-      type: "callout";
-      title?: string;
-      content: string;
-      tone?: "info" | "warning" | "success";
-    };
+    type: "callout";
+    title?: string;
+    content: string;
+    tone?: "info" | "warning" | "success";
+  };
 
 type ProjectWiki = {
   id: string;
@@ -310,7 +310,7 @@ export default function ProjectWikiPage() {
       <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:72px_72px]" />
 
       <main className="relative mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-8">
-        
+
         {/* TOP BAR */}
         <div className="mb-6 flex items-center justify-between gap-4">
           <Link
@@ -371,7 +371,7 @@ export default function ProjectWikiPage() {
 
         {/* CONTENT */}
         <section className="mt-6 grid gap-6 lg:grid-cols-[240px_1fr]">
-          
+
           {/* TOC */}
           <aside className="hidden lg:block">
             <div className="sticky top-6 rounded-[1.8rem] border border-white/10 bg-white/5 p-5 backdrop-blur">
@@ -381,13 +381,13 @@ export default function ProjectWikiPage() {
 
               <nav className="mt-4 space-y-2">
                 {toc.map((item, index) => (
-                 <a
-  key={item.id}
-  href={`#${item.id}`}
-  className="block rounded-xl border border-white/5 bg-white/5 px-3 py-2 text-sm text-white/75 transition hover:bg-white/10 hover:text-white"
->
-  {index + 1}. {item.title}
-</a>
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className="block rounded-xl border border-white/5 bg-white/5 px-3 py-2 text-sm text-white/75 transition hover:bg-white/10 hover:text-white"
+                  >
+                    {index + 1}. {item.title}
+                  </a>
                 ))}
               </nav>
             </div>
