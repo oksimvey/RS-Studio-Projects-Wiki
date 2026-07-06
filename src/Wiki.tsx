@@ -71,7 +71,7 @@ const wikiPages: Record<string, ProjectWiki> = {
       },
       {
         type: "media",
-        title: "Preview",
+        title: "Features",
         items: [
           {
             type: "image",
@@ -88,7 +88,7 @@ const wikiPages: Record<string, ProjectWiki> = {
       },
       {
         type: "list",
-        title: "Features",
+        title: "Instalattion",
         items: [
           "Smooth follow and interpolation",
           "Cutscene support",
@@ -100,7 +100,7 @@ const wikiPages: Record<string, ProjectWiki> = {
       {
         type: "list",
        
-        title: "Design goal",
+        title: "Usage",
         items:[
           "The goal was to keep the logic clean and easy to extend, while still feeling polished in-game.",
       
