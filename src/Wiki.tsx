@@ -278,13 +278,13 @@ export default function ProjectWikiPage() {
 
   if (!page) {
     return (
-      <motion.div
-        className="min-h-screen bg-[#050816] px-6 py-10 text-white"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
-      >
+     <motion.div
+  className="min-h-screen bg-black"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.2 }}
+>
         <div className="mx-auto max-w-3xl rounded-[1.8rem] border border-white/10 bg-white/5 p-8 backdrop-blur">
           <h1 className="text-3xl font-black">Project not found</h1>
           <p className="mt-3 text-white/70">

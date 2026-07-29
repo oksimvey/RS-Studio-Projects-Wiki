@@ -121,13 +121,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export default function RobloxWikiLandingPage() {
   return (
-    <motion.div
-      className="relative min-h-screen overflow-hidden bg-[#050816] text-white"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.25 }}
-    >
+   <motion.div
+  className="min-h-screen bg-black"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.2 }}
+>
       {/* BACKGROUND EFFECTS */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(139,92,246,0.25),transparent_28%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.18),transparent_24%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.12),transparent_20%)]" />
 
