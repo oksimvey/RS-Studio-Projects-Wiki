@@ -85,7 +85,7 @@ const projects: Project[] = [
   {
     id : "advanced-combat-system",
     title: "Advanced Combat System",
-    description: "An advanced combat system with built-in melee and ranged combat.",
+    description: "A modular advanced combat system with built-in melee and ranged combat.",
     image: advcombatimg,
     color: "from-red-400/35 to-orange-400/10",
     commingSoon: true
