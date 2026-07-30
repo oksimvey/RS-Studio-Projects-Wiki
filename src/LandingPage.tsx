@@ -11,27 +11,27 @@ import combatimg from "./assets/combat_system.jpg"
 
 import advcombatimg from "./assets/advanced_combat_system.jpg"
 
-import fpsimg from "./assets/fps_system.jpg"
+//import fpsimg from "./assets/fps_system.jpg"
 
-import movementimg from "./assets/movement_system.jpg"
+//import movementimg from "./assets/movement_system.jpg"
 
-import npcimg from "./assets/npc_system.jpg"
+//import npcimg from "./assets/npc_system.jpg"
 
-import physicsimg from "./assets/physics_system.jpg"
+//import physicsimg from "./assets/physics_system.jpg"
 
-import simulatorimg from "./assets/simulator_template.jpg"
+//import simulatorimg from "./assets/simulator_template.jpg"
 
-import soccerimg from "./assets/soccer_system.jpg"
+//import soccerimg from "./assets/soccer_system.jpg"
 
-import towerimg from "./assets/tower_defense_template.jpg"
+//import towerimg from "./assets/tower_defense_template.jpg"
 
-import tycoonimg from "./assets/tycoon_template.jpg"
+//import tycoonimg from "./assets/tycoon_template.jpg"
 
-import vehicleimg from "./assets/vehicle_system.jpg"
+//import vehicleimg from "./assets/vehicle_system.jpg"
 
-import waterimg from "./assets/water_system.jpg"
+//import waterimg from "./assets/water_system.jpg"
 
-import weatherimg from "./assets/weather_system.jpg"
+//import weatherimg from "./assets/weather_system.jpg"
 
 
 
