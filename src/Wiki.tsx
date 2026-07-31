@@ -65,9 +65,14 @@ const wikiPages: Record<string, ProjectWiki> = {
         type: "text",
         title: "Overview",
         content: [
-          "This system was built to handle smooth camera movement, cutscenes, and custom lock-in behavior.",
-          "It is designed to be modular, so each part can be enabled, disabled, or replaced without rewriting the whole thing.",
-        ],
+          "A premium, fully customizable camera system built to make your game feel smoother, more polished, and way more immersive. Designed with flexibility in mind, it gives you everything you need to create a cinematic player experience without fighting clunky camera code.",
+
+"It includes smooth follow and interpolation for fluid movement, dynamic FOV effects for speed and intensity, wind and shake effects for extra impact, and a custom first-person mode that feels clean and responsive. You also get custom shift lock, target lock-on, full cutscene support, and auto-adjustable zoom for a seamless experience across different gameplay styles.",
+
+"Whether you are making a fast-paced action game, a story-driven experience, or a polished simulator, this system adapts to your needs. It is extremely customizable, easy to fit into different projects, and built with multi-platform support so it works naturally on PC, mobile, and console.",
+
+"If you want a camera system that adds real quality, improves immersion, and gives your game a professional feel out of the box, this is the kind of upgrade players notice immediately."
+            ],
       },
       {
         type: "media",
