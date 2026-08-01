@@ -142,6 +142,17 @@ const wikiPages: Record<string, ProjectWiki> = {
           },
         ],
       },
+      {
+        type: "media",
+        title: "Player and camera rotation based on movement",
+        items: [
+          {
+            type: "video",
+            src: cutsceneShowcase,
+            caption: "Create cinematic cutscenes with keyframes, filters and transitions.",
+          },
+        ],
+      },
        {
         type: "media",
         title: "Wind effect",
