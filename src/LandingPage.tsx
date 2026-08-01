@@ -9,7 +9,7 @@ import camimg from "./assets/camera_system.jpg"
 
 import combatimg from "./assets/combat_system.jpg"
 
-import advcombatimg from "./assets/advanced_combat_system.jpg"
+//import advcombatimg from "./assets/advanced_combat_system.jpg"
 
 //import fpsimg from "./assets/fps_system.jpg"
 
@@ -79,14 +79,6 @@ const projects: Project[] = [
     title: "Combat System",
     description: "A modular combat system with built-in melee and ranged combat.",
     image: combatimg,
-    color: "from-red-400/35 to-orange-400/10",
-    commingSoon: true
-  },
-  {
-    id : "advanced-combat-system",
-    title: "Advanced Combat System",
-    description: "A modular advanced combat system with built-in melee and ranged combat.",
-    image: advcombatimg,
     color: "from-red-400/35 to-orange-400/10",
     commingSoon: true
   }
