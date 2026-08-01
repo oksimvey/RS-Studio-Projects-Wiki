@@ -86,7 +86,7 @@ const wikiPages: Record<string, ProjectWiki> = {
           },
           {
             type: "video",
-            src: "/assets/cutscene_showcase.mp4",
+            src: "./assets/cutscene_showcase.mp4",
             caption: "Short demo of the transition system.",
           },
         ],
