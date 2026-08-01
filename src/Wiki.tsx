@@ -50,7 +50,23 @@ type ProjectWiki = {
   sections: WikiSection[];
 };
 
-import cutsceneShowcase from "./assets/camera_system/cutscene_showcase.mp4";
+import closedAmbientShowcase from "./assets/camera_system/closed_ambience.mp4"
+
+import cutsceneShowcase from "./assets/camera_system/cutscene_showcase.mp4"
+
+import firstPersonShowcase from "./assets/camera_system/first_person.mp4"
+
+import lockInShowcase from "./assets/camera_system/lock_in.mp4"
+
+import mobileShowcase from "./assets/camera_system/mobile.mp4"
+
+import shakeShowcase from "./assets/camera_system/shake.mp4"
+
+import shiftLockShowcase from "./assets/camera_system/shift_lock.mp4"
+
+import smoothFollowShowcase from "./assets/camera_system/smooth_follow.mp4"
+
+import windEffectShowcase from "./assets/camera_system/wind_effect.mp4"
 
 const wikiPages: Record<string, ProjectWiki> = {
   "camera-system": {
@@ -60,7 +76,7 @@ const wikiPages: Record<string, ProjectWiki> = {
     status: "available",
     color: "from-violet-400/35 to-fuchsia-400/10",
     cover: "/assets/camera_system.jpg",
-    updatedAt: "June 2026",
+    updatedAt: "August 2026",
     tags: ["Camera", "Roblox", "Animation", "Systems"],
     sections: [
       {
@@ -78,12 +94,12 @@ const wikiPages: Record<string, ProjectWiki> = {
       },
       {
         type: "media",
-        title: "Smooth follow and interpolation",
+        title: "Smooth Follow & Interpolation",
         items: [
           {
             type: "video",
-            src: "",
-            caption: "Smooth camera interpolation with configurable responsiveness.",
+            src: smoothFollowShowcase,
+            caption: "Smoothly interpolates camera movement and rotation for responsive, natural-looking motion.",
           },
         ],
       },
@@ -94,101 +110,90 @@ const wikiPages: Record<string, ProjectWiki> = {
           {
             type: "video",
             src: cutsceneShowcase,
-            caption: "Create cinematic cutscenes with keyframes, filters and transitions.",
+            caption: "Create cinematic cutscenes with keyframes, camera filters, and seamless transitions.",
           },
         ],
       },
       {
         type: "media",
-        title: "Custom shift lock",
+        title: "Custom Shift Lock",
         items: [
           {
             type: "video",
-            src: "",
-            caption: "Smooth camera interpolation with configurable responsiveness.",
+            src: shiftLockShowcase,
+            caption: "A fully customizable shift lock with smooth transitions and configurable behavior.",
           },
         ],
       },
       {
         type: "media",
-        title: "Custom first person",
+        title: "Custom First Person",
         items: [
           {
             type: "video",
-            src: "",
-            caption: "Smooth camera interpolation with configurable responsiveness.",
+            src: firstPersonShowcase,
+            caption: "An immersive first-person mode with customizable camera positioning and controls.",
           },
         ],
       },
-       {
+      {
         type: "media",
         title: "Target Lock",
         items: [
           {
             type: "video",
-            src: "",
-            caption: "Lock onto enemies with smooth target switching.",
+            src: lockInShowcase,
+            caption: "Lock onto targets with smooth tracking and effortless target switching.",
           },
         ],
       },
       {
         type: "media",
-        title: "Adaptative zoom",
+        title: "Adaptive Zoom",
         items: [
           {
             type: "video",
-            src: cutsceneShowcase,
-            caption: "Create cinematic cutscenes with keyframes, filters and transitions.",
+            src: closedAmbientShowcase,
+            caption: "Automatically adjusts camera zoom in tight spaces to prevent clipping and improve visibility.",
           },
         ],
       },
       {
         type: "media",
-        title: "Player and camera rotation based on movement",
+        title: "Wind Effect",
         items: [
           {
             type: "video",
-            src: cutsceneShowcase,
-            caption: "Create cinematic cutscenes with keyframes, filters and transitions.",
+            src: windEffectShowcase,
+            caption: "Adds subtle camera movement to simulate wind and enhance environmental immersion.",
           },
         ],
       },
-       {
+      {
         type: "media",
-        title: "Wind effect",
+        title: "Multi-Platform Support",
         items: [
           {
             type: "video",
-            src: cutsceneShowcase,
-            caption: "Create cinematic cutscenes with keyframes, filters and transitions.",
+            src: mobileShowcase,
+            caption: "Built for desktop, mobile, console, and gamepad with platform-specific controls.",
           },
         ],
       },
-       {
+      {
         type: "media",
-        title: "Multi plataform support",
+        title: "Shake Effect",
         items: [
           {
             type: "video",
-            src: cutsceneShowcase,
-            caption: "Create cinematic cutscenes with keyframes, filters and transitions.",
-          },
-        ],
-      },
-       {
-        type: "media",
-        title: "Shake effect",
-        items: [
-          {
-            type: "video",
-            src: cutsceneShowcase,
-            caption: "Create cinematic cutscenes with keyframes, filters and transitions.",
+            src: shakeShowcase,
+            caption: "Create dynamic camera shakes for impacts, explosions, and other gameplay events.",
           },
         ],
       },
 
-    
-     
+
+
       {
         type: "list",
         title: "Instalattion",
@@ -320,54 +325,54 @@ function SectionRenderer({ section }: { section: WikiSection }) {
     );
   }
 
- if (section.type === "media") {
-  return (
-    <Card className="rounded-[1.8rem] border border-white/10 bg-white/5 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur">
-      <CardContent className="p-5 sm:p-6">
-        {section.title && (
-          <h2 className="text-2xl font-black text-center tracking-tight text-white">
-            {section.title}
-          </h2>
-        )}
+  if (section.type === "media") {
+    return (
+      <Card className="rounded-[1.8rem] border border-white/10 bg-white/5 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur">
+        <CardContent className="p-5 sm:p-6">
+          {section.title && (
+            <h2 className="text-2xl font-black text-center tracking-tight text-white">
+              {section.title}
+            </h2>
+          )}
 
-        <div className="mt-4 flex flex-col items-center gap-4">
-          {section.items.map((item, i) => (
-            <div
-              key={i}
-              className="w-full max-w-4xl overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#11162b]"
-            >
-              {item.type === "video" ? (
-                <video
-                  className="w-full"
-                  controls
-                  loop
-                  muted
-                  playsInline
-                >
-                  <source src={item.src} type="video/mp4" />
-                  Your browser doesnt support videos.
-                </video>
-              ) : (
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full"
-                  loading="lazy"
-                />
-              )}
+          <div className="mt-4 flex flex-col items-center gap-4">
+            {section.items.map((item, i) => (
+              <div
+                key={i}
+                className="w-full max-w-4xl overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#11162b]"
+              >
+                {item.type === "video" ? (
+                  <video
+                    className="w-full"
+                    controls
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src={item.src} type="video/mp4" />
+                    Your browser doesnt support videos.
+                  </video>
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full"
+                    loading="lazy"
+                  />
+                )}
 
-              {item.caption && (
-                <div className="border-t border-white/10 px-4 py-3 text-sm text-white/65">
-                  {item.caption}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
+                {item.caption && (
+                  <div className="border-t border-white/10 px-4 py-3 text-sm text-white/65">
+                    {item.caption}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return null;
 }
