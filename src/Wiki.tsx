@@ -387,7 +387,7 @@ const wikiPages: Record<string, ProjectWiki> = {
           ")",
           "---",
 
-         
+
 
           "CameraCutscene is the main class responsible for playing cinematic camera sequences. It combines camera keyframes with optional features such as interpolation, target tracking, relative positioning, collision handling, visual filters, and cinematic UI.",
 
@@ -527,7 +527,7 @@ const wikiPages: Record<string, ProjectWiki> = {
 };
 
 function Card({ className = "", children }: { className?: string; children: React.ReactNode }) {
-  return <div className={className}>{children}</div>;
+  return <div className={`w-full min-w-0 ${className}`}>{children}</div>;
 }
 
 function CardContent({
@@ -537,16 +537,19 @@ function CardContent({
   className?: string;
   children: React.ReactNode;
 }) {
-  return <div className={className}>{children}</div>;
+  return <div className={`min-w-0 ${className}`}>{children}</div>;
 }
 
 function SectionRenderer({ section }: { section: WikiSection }) {
   if (section.type === "text") {
     return (
       <Card className="rounded-[1.8rem] border border-white/10 bg-white/5 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur">
-        <CardContent className="p-5 sm:p-6">
-          <h2 className="text-2xl font-black text-center tracking-tight text-white">{section.title}</h2>
-          <div className="mt-4 space-y-4 text-sm leading-7 text-white/72">
+        <CardContent className="p-4 sm:p-6">
+          <h2 className="text-xl font-black text-center tracking-tight text-white sm:text-2xl">{section.title}</h2>
+          <div
+            className="mt-4 space-y-4 text-sm leading-7 text-white/72 break-words"
+            style={{ overflowWrap: "anywhere" }}
+          >
             {section.content.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}
@@ -559,13 +562,15 @@ function SectionRenderer({ section }: { section: WikiSection }) {
   if (section.type === "list") {
     return (
       <Card className="rounded-[1.8rem] border border-white/10 bg-white/5 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur">
-        <CardContent className="p-5 sm:p-6">
-          <h2 className="text-2xl font-black text-center tracking-tight text-white">{section.title}</h2>
-          <ul className="mt-4 space-y-3 text-sm leading-6 text-white/74">
+        <CardContent className="p-4 sm:p-6">
+          <h2 className="text-xl font-black text-center tracking-tight text-white sm:text-2xl">{section.title}</h2>
+          <ul className="mt-4 space-y-3 text-sm leading-6 text-white/74 break-words">
             {section.items.map((item, i) => (
-              <li key={i} className="flex gap-3">
+              <li key={i} className="flex min-w-0 gap-3">
                 <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-white/60" />
-                <span>{item}</span>
+                <span className="min-w-0 break-words" style={{ overflowWrap: "anywhere" }}>
+                  {item}
+                </span>
               </li>
             ))}
           </ul>
@@ -584,9 +589,12 @@ function SectionRenderer({ section }: { section: WikiSection }) {
 
     return (
       <Card className={`rounded-[1.8rem] border shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur ${toneClass}`}>
-        <CardContent className="p-5 sm:p-6">
+        <CardContent className="p-4 sm:p-6">
           {section.title && <h2 className="text-lg font-bold">{section.title}</h2>}
-          <p className={`mt-2 text-sm leading-7 ${section.title ? "opacity-90" : ""}`}>
+          <p
+            className={`mt-2 text-sm leading-7 break-words ${section.title ? "opacity-90" : ""}`}
+            style={{ overflowWrap: "anywhere" }}
+          >
             {section.content}
           </p>
         </CardContent>
@@ -597,18 +605,18 @@ function SectionRenderer({ section }: { section: WikiSection }) {
   if (section.type === "media") {
     return (
       <Card className="rounded-[1.8rem] border border-white/10 bg-white/5 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur">
-        <CardContent className="p-5 sm:p-6">
+        <CardContent className="p-4 sm:p-6">
           {section.title && (
-            <h2 className="text-2xl font-black text-center tracking-tight text-white">
+            <h2 className="text-xl font-black text-center tracking-tight text-white sm:text-2xl">
               {section.title}
             </h2>
           )}
 
-          <div className="mt-4 flex flex-col items-center gap-4">
+          <div className="mt-4 flex min-w-0 flex-col items-center gap-4">
             {section.items.map((item, i) => (
               <div
                 key={i}
-                className="w-full max-w-4xl overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#11162b]"
+                className="w-full min-w-0 max-w-4xl overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#11162b]"
               >
                 {item.type === "video" ? (
                   <video
@@ -631,7 +639,7 @@ function SectionRenderer({ section }: { section: WikiSection }) {
                 )}
 
                 {item.caption && (
-                  <div className="border-t border-white/10 px-4 py-3 text-sm text-white/65">
+                  <div className="border-t border-white/10 px-4 py-3 text-sm text-white/65 break-words" style={{ overflowWrap: "anywhere" }}>
                     {item.caption}
                   </div>
                 )}
@@ -707,10 +715,10 @@ export default function ProjectWikiPage() {
 
       <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:72px_72px]" />
 
-      <main className="relative mx-auto max-w-7xl px-5 py-6 pb-20 sm:px-6 lg:px-8 lg:py-8 lg:pb-24">
+      <main className="relative mx-auto max-w-7xl min-w-0 px-5 py-6 pb-20 sm:px-6 lg:px-8 lg:py-8 lg:pb-24">
 
         {/* TOP BAR */}
-        <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="mb-6 flex min-w-0 items-center justify-between gap-4">
           <Link
             to="/"
             className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80 backdrop-blur transition hover:bg-white/10"
@@ -768,10 +776,10 @@ export default function ProjectWikiPage() {
         </section>
 
         {/* CONTENT */}
-        <section className="mt-6 grid gap-6 lg:grid-cols-[240px_1fr]">
+        <section className="mt-6 grid min-w-0 gap-6 lg:grid-cols-[240px_1fr]">
 
           {/* TOC */}
-          <aside className="hidden lg:block">
+          <aside className="hidden min-w-0 lg:block">
             <div className="sticky top-6 rounded-[1.8rem] border border-white/10 bg-white/5 p-5 backdrop-blur">
               <h2 className="text-sm font-bold uppercase tracking-[0.25em] text-white/50">
                 Contents
@@ -795,12 +803,12 @@ export default function ProjectWikiPage() {
           </aside>
 
           {/* SECTIONS */}
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
             {page.sections.map((section, index) => (
               <motion.section
                 key={index}
                 id={`section-${index}`}
-                className="scroll-mt-24"
+                className="scroll-mt-24 min-w-0"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
