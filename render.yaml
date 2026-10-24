@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: roblox-studio-mcp-bridge
+    runtime: node
+    plan: free
+    region: virginia
+    repo: https://github.com/oksimvey/RS-Studio-Projects-Wiki
+    branch: feat/chatgpt-roblox-mcp-bridge
+    rootDir: mcp-bridge
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CHAT_API_KEY
+        sync: false
+      - key: RUNNER_API_KEY
+        sync: false
